@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "calcbut.h"
+
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image/stb_image.h"
-//#define STB_IMAGE_WRITE_IMPLEMENTATION
-//#include "stb_image/stb_image_write.h"
+
 #define CNFG_IMPLEMENTATION
 #include "rawdraw/CNFG.h"
 #include "rawdraw/os_generic.h"
-#define CNFGOGL
+
 #define HAS_XSHAPE
 #define HAS_XINERAMA
+
 
 
 void HandleKey( int keycode, int bDown ) { }
@@ -21,7 +23,7 @@ void HandleDestroy() { }
 
 int main(void)
 {
-	// Load image
+	// Load image from png file with nothing/stb_image.h
 	int width, height, channels;
 	unsigned char *img = stbi_load("resources/calcbut.png", &width, &height, &channels, 0);
 	if(img == NULL)
@@ -30,10 +32,8 @@ int main(void)
 		exit(1);
 	}
 
-	for(int i = 0; i < 48; i++)
-    {
-    	printf("%u\n", img[i]);
-   	}
+    // pointer to array created by xxd
+	unsigned char *img2 = calcbut_png;
 
 	CNFGSetup( "Example App", 1440, 768 );
 	while(1)
@@ -45,15 +45,9 @@ int main(void)
 		CNFGHandleInput();
 		CNFGGetDimensions( &w, &h );
 
-		//Change color to white.
-		//CNFGColor( 0xffffffff );
-
-		//CNFGPenX = 1;
-		//CNFGPenY = 1;
-
-		//CNFGDrawText( "Hello, World", 2 );
 
 		CNFGBlitImage((unsigned int*)img, 10, 10, width, height);
+		CNFGBlitImage((unsigned int*)img2, 10, 200, 300, 88);
 
 		CNFGSwapBuffers();
 	}
