@@ -14,7 +14,7 @@
     `unsigned char *img2 = calcbut_png;`
 
 * or use ld to link the png as a binary blob into the executable
-  - `ld  -r -b binary -o calcbut.o calcbut.png` on the terminal
+  - `ld  -r -b binary -o calcbut.o calcbut.png` on the terminal (this Makefile does this for you)
 
   - ```
     extern unsigned char _binary_calcbut_png_start[];
