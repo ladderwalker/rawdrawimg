@@ -25,10 +25,6 @@ void HandleDestroy() { }
 
 int main(void)
 {
-	//Load image from object
-	printf( "address of start: %p\n", &_binary_calcbut_png_start);
-    printf( "address of end: %p\n", &_binary_calcbut_png_end);
-
 
 	// Load image from png file with nothing/stb_image.h
 	int width, height, channels;
