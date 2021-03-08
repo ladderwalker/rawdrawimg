@@ -29,9 +29,6 @@ int main(void)
 	printf( "address of start: %p\n", &_binary_calcbut_png_start);
     printf( "address of end: %p\n", &_binary_calcbut_png_end);
 
-    /*for (unsigned char* p = _binary_calcbut_png_start; p != _binary_calcbut_png_end; ++p) {
-        putchar( *p);
-    }*/
 
 	// Load image from png file with nothing/stb_image.h
 	int width, height, channels;
